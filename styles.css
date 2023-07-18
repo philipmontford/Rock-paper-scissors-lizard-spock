@@ -93,37 +93,53 @@ color: var(--score-text);
 .game {
   position: relative;
   display: grid;
-  grid-template-columns: (repeat(1 4fr));
+  grid-template-columns: repeat(5, 1fr);
   grid-template-areas: 
-      /* "paper scissiors" */
-      "rock rock"
-      "paper paper"
-      "scissors scissors"
-      "lizard lizard"
-      "spock spock";
+    "rock rock scissors paper paper"
+    "lizard lizard lizard spock spock";
+
   place-items: center;
   height: 40rem;
-  padding-top: 4rem;
-}
-
-.option-btn[data-choice="paper"] {
-  grid-area: paper;
+  padding-top: 5rem;
 }
 
 .option-btn[data-choice="scissors"] {
   grid-area: scissors;
+  position: absolute;
+  bottom: 80%;
+  right:30%;
 }
+
+.option-btn[data-choice="paper"] {
+  grid-area: paper;
+  position: absolute;
+  top: 40%;
+  right: 80%;
+  
+}
+
 
 .option-btn[data-choice="rock"] {
   grid-area: rock;
+  position: absolute;
+  bottom: -10%;
+  left: 138%
 }
 
 .option-btn[data-choice="lizard"] {
   grid-area: lizard;
+  position: absolute;
+  top: -13%;
+  right: 23%;
+
 }
 
 .option-btn[data-choice="spock"] {
   grid-area: spock;
+  position: absolute;
+  bottom: 140%;
+  left: -70%;
+
 }
 
 
