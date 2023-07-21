@@ -13,14 +13,14 @@
   --bg-grad-2: hsl(237, 49%, 15%);
   --scissors-gd-1: hsl(39, 89%, 49%);
   --scissors-gd-2: hsl(40, 84%, 53%);
-  --paper-gd-2: hsl(230, 89%, 62%);
+  --paper-gd-1: hsl(230, 89%, 62%);
   --paper-gd-2: hsl(230, 89%, 65%);
   --rock-gd-1: hsl(349, 71%, 52%);
   --rock-gd-2: hsl(349, 70%, 56%);
   --lizard-gd-1: hsl(261, 73%, 60%);
   --lizard-gd-2: hsl(261, 72%, 63%);
   --spock-gd-1: hsl(189, 59%, 53%);
-  --spock-gd-1: hsl(189, 58%, 57%);
+  --spock-gd-2: hsl(189, 58%, 57%);
 
 }
 
@@ -103,42 +103,103 @@ color: var(--score-text);
   padding-top: 5rem;
 }
 
-.option-btn[data-choice="scissors"] {
-  grid-area: scissors;
-  position: absolute;
-  bottom: 80%;
-  right:30%;
+.game::before {
+content: '';
+position: absolute;
+width: 50%;
+height: 50%;
+left: 39%;
+top: 35%;
+background: url('./images/bg-pentagon.svg') no-repeat;
+z-index: -1;
+
 }
 
-.option-btn[data-choice="paper"] {
+.option-btn{
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+
+.option-btn {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  background: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.option-btn::before {
+  content: '';
+  position: absolute;
+  left: -15%;
+  top: -15%;
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  z-index: -1;
+  
+}
+
+.option-btn[data-option="paper"]::before {
+  background: linear-gradient(to bottom, var(--paper-gd-1), var(--paper-gd-2));
+}
+
+.option-btn[data-option="scissors"]::before {
+  background: linear-gradient(to bottom, var(--scissors-gd-1), var(--scissors-gd-2));
+}
+
+.option-btn[data-option="rock"]::before {
+  background: linear-gradient(to bottom, var(--rock-gd-1), var(--rock-gd-2));
+}
+.option-btn[data-option="lizard"]::before {
+  background: linear-gradient(to bottom, var(--lizard-gd-1), var(--lizard-gd-2));
+}
+
+.option-btn[data-option="spock"]::before {
+  background: linear-gradient(to bottom, var(--spock-gd-1), var(--spock-gd-2));
+}
+
+.option-btn[data-option="scissors"] {
+  grid-area: scissors;
+  position: absolute;
+  top: 10%;
+  right:19%;
+}
+
+.option-btn[data-option="paper"] {
   grid-area: paper;
   position: absolute;
-  top: 40%;
-  right: 80%;
+  top: 70%;
+  right: 74%;
   
 }
 
 
-.option-btn[data-choice="rock"] {
+.option-btn[data-option="rock"] {
   grid-area: rock;
   position: absolute;
-  bottom: -10%;
-  left: 138%
+  top: 152%;
+  left: 135%
 }
 
-.option-btn[data-choice="lizard"] {
+.option-btn[data-option="lizard"] {
   grid-area: lizard;
   position: absolute;
-  top: -13%;
-  right: 23%;
+  top: 55%;
+  right: 20%;
 
 }
 
-.option-btn[data-choice="spock"] {
+.option-btn[data-option="spock"] {
   grid-area: spock;
   position: absolute;
-  bottom: 140%;
-  left: -70%;
+  top: -25%;
+  left: -75%;
 
 }
 
@@ -147,5 +208,14 @@ color: var(--score-text);
 
 
 
-.attribution { font-size: 11px; text-align: center; }
+.attribution { 
+  position: absolute;
+  font-size: 11px; 
+  text-align: center;
+  left: 40%;
+  bottom: 5%;
+  
+ }
+
+
 .attribution a { color: hsl(228, 45%, 44%); }
