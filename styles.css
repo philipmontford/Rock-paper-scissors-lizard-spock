@@ -21,6 +21,8 @@
   --lizard-gd-2: hsl(261, 72%, 63%);
   --spock-gd-1: hsl(189, 59%, 53%);
   --spock-gd-2: hsl(189, 58%, 57%);
+  --shadow-light: #00000026;
+  --shadow-med: #0000004d;
 
 }
 
@@ -108,10 +110,11 @@ content: '';
 position: absolute;
 width: 50%;
 height: 50%;
-left: 39%;
+left:43%;
 top: 35%;
 background: url('./images/bg-pentagon.svg') no-repeat;
 z-index: -1;
+
 
 }
 
@@ -131,9 +134,11 @@ z-index: -1;
   border-radius: 50%;
   display: grid;
   place-items: center;
+  box-shadow: inset 0 0.5rem var(--shadow-light);
 }
 
-.option-btn::before {
+.option-btn::before,
+.option-btn::after {
   content: '';
   position: absolute;
   left: -15%;
@@ -145,37 +150,58 @@ z-index: -1;
   
 }
 
+
+.option-btn::after {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.option-btn:focus.option-btn::after   {
+  opacity: 1;
+  box-shadow: 0 0 0 2rem #223351;
+  z-index: -2;
+}
+
+.option-btn img {
+  transform: scale(1.5);
+}
+
 .option-btn[data-option="paper"]::before {
   background: linear-gradient(to bottom, var(--paper-gd-1), var(--paper-gd-2));
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--paper-gd-2);
 }
 
 .option-btn[data-option="scissors"]::before {
   background: linear-gradient(to bottom, var(--scissors-gd-1), var(--scissors-gd-2));
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--scissors-gd-2);
 }
 
 .option-btn[data-option="rock"]::before {
   background: linear-gradient(to bottom, var(--rock-gd-1), var(--rock-gd-2));
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--rock-gd-2);
 }
 .option-btn[data-option="lizard"]::before {
   background: linear-gradient(to bottom, var(--lizard-gd-1), var(--lizard-gd-2));
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--lizard-gd-2);
 }
 
 .option-btn[data-option="spock"]::before {
   background: linear-gradient(to bottom, var(--spock-gd-1), var(--spock-gd-2));
+  box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--spock-gd-2);
 }
 
 .option-btn[data-option="scissors"] {
   grid-area: scissors;
   position: absolute;
-  top: 10%;
+  top: 11%;
   right:19%;
 }
 
 .option-btn[data-option="paper"] {
   grid-area: paper;
   position: absolute;
-  top: 70%;
-  right: 74%;
+  top: 67%;
+  right: 85%;
   
 }
 
@@ -183,14 +209,14 @@ z-index: -1;
 .option-btn[data-option="rock"] {
   grid-area: rock;
   position: absolute;
-  top: 152%;
-  left: 135%
+  top: 145%;
+  left: 135%;
 }
 
 .option-btn[data-option="lizard"] {
   grid-area: lizard;
   position: absolute;
-  top: 55%;
+  top: 45%;
   right: 20%;
 
 }
@@ -198,24 +224,106 @@ z-index: -1;
 .option-btn[data-option="spock"] {
   grid-area: spock;
   position: absolute;
-  top: -25%;
-  left: -75%;
+  top: -36.5%;
+  left: -55%;
 
 }
 
 
 
+/*rules button*/
+  .rules-btn {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    background: none;
+    outline: none;
+    border: 2px solid var(--h-outline);
+    border-radius: 0.6rem;
+    color: var(--light-text);
+    padding: 0.6rem 2.5rem;
+    font-family: inherit;
+    text-transform: inherit;
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
 
 
+  .rules-btn:focus {
+    border: 2px solid #fff;
+
+  }
+
+
+
+  /*Rules Model*/
+  .modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    background: var(--shadow-med);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .modal-holder {
+    background: #fff;
+    border-radius: 0.5rem;
+  }
+
+  .modal-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2rem 2rem 1rem;
+
+  }
+
+  .modal-heading {
+    font-size: 1.5rem;
+    color: var(--dark-text);
+
+  }
+
+.close-btn {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.rules-img {
+  padding: 2rem 4rem;
+}
+
+.show-modal {
+opacity: 1;
+pointer-events: initial;
+
+}
+
+/*footer*/
+.footer {
+position: absolute;
+bottom: 2rem;
+width: 100%;
+padding: 0 2rem;
+text-align: center;
+
+}
 
 .attribution { 
-  position: absolute;
-  font-size: 11px; 
+  font-size: 12px; 
   text-align: center;
-  left: 40%;
-  bottom: 5%;
-  
+  color: #ffffff;
+  letter-spacing: 0.2rem;
  }
 
 
-.attribution a { color: hsl(228, 45%, 44%); }
+.attribution a { color: hsl(19, 78%, 51%); }
