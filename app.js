@@ -1,12 +1,9 @@
-//Prevent animation on load
+// Prevent animation on load
 setTimeout(() => {
-  Document.body.classList.remove('preload')
+  document.body.classList.remove('preload');
 }, 500);
 
-
-
-
-//DOM
+// DOM
 const btnRules = document.querySelector('.rules-btn');
 const btnClose = document.querySelector('.close-btn');
 const modalRules = document.querySelector('.modal');
@@ -14,31 +11,31 @@ const modalRules = document.querySelector('.modal');
 const OPTIONS = [
   {
     name: "paper",
-    beats: "rock"
+    beats: "rock",
   },
   {
     name: "scissors",
-    beats: "paper"
+    beats: "paper",
   },
   {
     name: "rock",
-    beats: "lizard"
+    beats: "lizard",
   },
   {
     name: "lizard",
-    beats: "spock"
+    beats: "spock",
   },
   {
     name: "spock",
-    beats: "scissors"
+    beats: "scissors",
   },
   {
     name: "scissors",
-    beats: "lizard"
+    beats: "lizard",
   },
   {
     name: "paper",
-    beats: "spock"
+    beats: "spock",
   },
   {
     name: "rock",
@@ -46,25 +43,54 @@ const OPTIONS = [
   },
   {
     name: "lizard",
-    beats: "paper"
+    beats: "paper",
   },
   {
     name: "spock",
-    beats: "rock"
+    beats: "rock",
   },
-]
+];
 
-const optionButton = document.querySelectorAll('.option-btn')
-const gameDiv = document.querySelectorAll('.game')
-const resultsDiv = document.querySelectorAll('.results')
-const resultDivs = document.querySelectorAll('.results-results')
+const optionButtons = document.querySelectorAll('.option_btn');
+const gameDivs = document.querySelectorAll('.game');
+const resultsDivs = document.querySelectorAll('.results');
+const resultDivs = document.querySelectorAll('.results_result');
 
+// Game Logic
+optionButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const optionName = button.dataset.option;
+    const option = OPTIONS.find((option) => option.name === optionName);
+    choose(option);
+  });
+});
 
-//Game Logic 
-optionButton.forEach ( button )
+function choose(option) {
+  const aioption = aiChoose();
+  displayResults([option, aioption]);
+}
 
+function aiChoose() {
+  const rand = Math.floor(Math.random() * OPTIONS.length);
+  return OPTIONS[rand];
+}
 
-//Show/Hide Rules
+function displayResults(results) {
+  resultDivs.forEach((resultDiv, idx) => {
+    setTimeout(() => {
+      resultDiv.innerHTML = `
+        <div class="option ${results[idx].name}">
+          <img src="images/icon-${results[idx].name}.svg" alt="${results[idx].name}" />
+        </div>
+      `;
+    }, idx * 1000);
+  });
+
+  gameDivs.forEach((gameDiv) => gameDiv.classList.toggle('hidden'));
+  resultsDivs.forEach((resultsDiv) => resultsDiv.classList.toggle('hidden'));
+}
+
+// Show/Hide Rules
 btnRules.addEventListener('click', () => {
   modalRules.classList.toggle('show-modal');
 });
@@ -72,5 +98,3 @@ btnRules.addEventListener('click', () => {
 btnClose.addEventListener('click', () => {
   modalRules.classList.toggle('show-modal');
 });
-
-

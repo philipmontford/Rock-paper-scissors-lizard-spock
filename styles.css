@@ -95,8 +95,9 @@ color: var(--score-text);
 .game {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 2fr);
   grid-template-areas: 
+
     "rock rock scissors paper paper"
     "lizard lizard lizard spock spock";
 
@@ -118,7 +119,7 @@ z-index: -1;
 
 }
 
-.option-btn{
+.option_btn{
   border: none;
   outline: none;
   background: none;
@@ -126,8 +127,8 @@ z-index: -1;
 }
 
 
-.option-btn {
-  position: absolute;
+.option {
+  position: relative;
   width: 10rem;
   height: 10rem;
   background: #fff;
@@ -137,8 +138,8 @@ z-index: -1;
   box-shadow: inset 0 0.5rem var(--shadow-light);
 }
 
-.option-btn::before,
-.option-btn::after {
+.option::before,
+.option::after {
   content: '';
   position: absolute;
   left: -15%;
@@ -151,53 +152,53 @@ z-index: -1;
 }
 
 
-.option-btn::after {
+.option::after {
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-.option-btn:focus.option-btn::after   {
+.option_btn:focus .option::after   {
   opacity: 1;
   box-shadow: 0 0 0 2rem #223351;
   z-index: -2;
 }
 
-.option-btn img {
+.option img {
   transform: scale(1.5);
 }
 
-.option-btn[data-option="paper"]::before {
+.option.paper::before {
   background: linear-gradient(to bottom, var(--paper-gd-1), var(--paper-gd-2));
   box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--paper-gd-2);
 }
 
-.option-btn[data-option="scissors"]::before {
+.option.scissors::before {
   background: linear-gradient(to bottom, var(--scissors-gd-1), var(--scissors-gd-2));
   box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--scissors-gd-2);
 }
 
-.option-btn[data-option="rock"]::before {
+.option.rock::before {
   background: linear-gradient(to bottom, var(--rock-gd-1), var(--rock-gd-2));
   box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--rock-gd-2);
 }
-.option-btn[data-option="lizard"]::before {
+.option.lizard::before {
   background: linear-gradient(to bottom, var(--lizard-gd-1), var(--lizard-gd-2));
   box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--lizard-gd-2);
 }
 
-.option-btn[data-option="spock"]::before {
+.option.spock::before {
   background: linear-gradient(to bottom, var(--spock-gd-1), var(--spock-gd-2));
   box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--spock-gd-2);
 }
 
-.option-btn[data-option="scissors"] {
+.option_btn[data-option="scissors"] {
   grid-area: scissors;
   position: absolute;
   top: 11%;
   right:19%;
 }
 
-.option-btn[data-option="paper"] {
+.option_btn[data-option="paper"] {
   grid-area: paper;
   position: absolute;
   top: 67%;
@@ -206,14 +207,14 @@ z-index: -1;
 }
 
 
-.option-btn[data-option="rock"] {
+.option_btn[data-option="rock"] {
   grid-area: rock;
   position: absolute;
   top: 145%;
   left: 135%;
 }
 
-.option-btn[data-option="lizard"] {
+.option_btn[data-option="lizard"] {
   grid-area: lizard;
   position: absolute;
   top: 45%;
@@ -221,7 +222,7 @@ z-index: -1;
 
 }
 
-.option-btn[data-option="spock"] {
+.option_btn[data-option="spock"] {
   grid-area: spock;
   position: absolute;
   top: -36.5%;
@@ -241,32 +242,32 @@ z-index: -1;
   margin: 0 auto;
 }
 
-.results-heading {
+.results_heading {
   font-size: 1.5rem;
   letter-spacing: 0.1em;
   padding: 4rem 0 8rem;
 }
 
-.results-results {
+.results_result {
   min-width: 10rem;
   min-height: 10rem;
   background: #16213d;
   border-radius: 50%;
 }
 
-.results-heading:first-of-type {
+.results_heading:first-of-type {
   grid-area: you-title;
 }
 
-.results-heading:last-of-type{
+.results_heading:last-of-type{
   grid-area: ai-title;
 }
 
-.results-results:first-of-type {
+.results_result:first-of-type {
   grid-area: you-picked;
 }
 
-.results-results:last-of-type {
+.results_result:last-of-type {
   grid-area: ai-picked;
 }
 
@@ -374,4 +375,8 @@ text-align: center;
 /*Utilities*/
 .preload * {
   transition: none;
+}
+
+.hidden {
+  display: none;
 }
