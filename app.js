@@ -11,55 +11,38 @@ const modalRules = document.querySelector('.modal');
 const OPTIONS = [
   {
     name: "paper",
-    beats: "rock",
+    beats: ["rock", "spock"],
   },
   {
     name: "scissors",
-    beats: "paper",
+    beats: ["paper", "lizard"],
   },
   {
     name: "rock",
-    beats: "lizard",
+    beats: ["scissors", "lizard"],
   },
   {
     name: "lizard",
-    beats: "spock",
+    beats: ["paper", "spock"],
   },
   {
     name: "spock",
-    beats: "scissors",
-  },
-  {
-    name: "scissors",
-    beats: "lizard",
-  },
-  {
-    name: "paper",
-    beats: "spock",
-  },
-  {
-    name: "rock",
-    beats: "scissors"
-  },
-  {
-    name: "lizard",
-    beats: "paper",
-  },
-  {
-    name: "spock",
-    beats: "rock",
+    beats: ["rock", "scissors"],
   },
 ];
 
 const optionButtons = document.querySelectorAll('.option_btn');
-const gameDivs = document.querySelectorAll('.game');
-const resultsDivs = document.querySelectorAll('.results');
+const gameDiv = document.querySelector('.game');
+const resultsDiv = document.querySelector('.results');
 const resultDivs = document.querySelectorAll('.results_result');
 
 const resultWinner = document.querySelector('.results_winner');
 const resultText = document.querySelector('.results_text');
 
 const playAgainBtn = document.querySelector('.play-again');
+
+const scoreNumber = document.querySelector('.score_number');
+let score = 0;
 
 // Game Logic
 optionButtons.forEach((button) => {
@@ -71,9 +54,9 @@ optionButtons.forEach((button) => {
 });
 
 function choose(option) {
-  const aioption = aiChoose();
-  displayResults([option, aioption]);
-  displayWinner([option, aioption]);
+  const aiOption = aiChoose();
+  displayResults([option, aiOption]);
+  displayWinner([option, aiOption]);
 }
 
 function aiChoose() {
@@ -92,8 +75,8 @@ function displayResults(results) {
     }, idx * 1000);
   });
 
-  gameDivs.forEach((gameDiv) => gameDiv.classList.toggle('hidden'));
-  resultsDivs.forEach((resultsDiv) => resultsDiv.classList.toggle('hidden'));
+  gameDiv.classList.toggle("hidden");
+  resultsDiv.classList.toggle("hidden");
 }
 
 function displayWinner(results) {
@@ -104,36 +87,42 @@ function displayWinner(results) {
     if (userWins) {
       resultText.innerText = "You win!";
       resultDivs[0].classList.toggle('winner');
+      keepScore(1);
     } else if (aiWins) {
       resultText.innerText = "You lose!";
       resultDivs[1].classList.toggle('winner');
+      keepScore(-1);
     } else {
-      resultText.innerText = "It's a draw!";
-      resultDivs[0].classList.toggle('winner');
+      resultText.innerText = "Draw!";
     }
-
-    resultWinner.classList.toggle('hidden');
-    resultsDivs.forEach((resultsDiv) => resultsDiv.classList.toggle('show-winner'));
+    
+    resultWinner.classList.toggle("hidden");
+    resultsDiv.classList.toggle("show-winner");
   }, 1000);
 }
 
 function isWinner(results) {
-  return results[0].beats === results[1].name;
+  return results[0].beats.includes(results[1].name);
+}
+
+  function keepScore(point) {
+  score += point;
+  scoreNumber.innerText = score;
 }
 
 // Play Again
 playAgainBtn.addEventListener('click', () => {
-  gameDivs.forEach((gameDiv) => gameDiv.classList.toggle('hidden'));
-  resultsDivs.forEach((resultsDiv) => resultsDiv.classList.toggle('hidden'));
+  gameDiv.classList.toggle("hidden");
+  resultsDiv.classList.toggle("hidden");
 
   resultDivs.forEach((resultDiv) => {
     resultDiv.innerHTML = "";
     resultDiv.classList.remove('winner');
   });
-  
+
   resultText.innerText = "";
-  resultWinner.classList.toggle('hidden');
-  resultsDivs.forEach((resultsDiv) => resultsDiv.classList.toggle('show-winner'));
+  resultWinner.classList.add('hidden');
+  resultsDiv.classList.remove("show-winner"); 
 });
 
 // Show/Hide Rules
