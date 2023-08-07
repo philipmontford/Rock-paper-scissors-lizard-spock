@@ -72,11 +72,12 @@ function displayResults(results) {
           <img src="images/icon-${results[idx].name}.svg" alt="${results[idx].name}" />
         </div>
       `;
+      resultDiv.classList.toggle('winner', false);
     }, idx * 1000);
   });
 
-  gameDiv.classList.toggle("hidden");
-  resultsDiv.classList.toggle("hidden");
+  gameDiv.classList.toggle("hidden", true);
+  resultsDiv.classList.toggle("hidden", false);
 }
 
 function displayWinner(results) {
@@ -86,20 +87,21 @@ function displayWinner(results) {
 
     if (userWins) {
       resultText.innerText = "You win!";
-      resultDivs[0].classList.toggle('winner');
+      resultDivs[0].classList.toggle('winner', true);
       keepScore(1);
     } else if (aiWins) {
       resultText.innerText = "You lose!";
-      resultDivs[1].classList.toggle('winner');
+      resultDivs[1].classList.toggle('winner', true);
       keepScore(-1);
     } else {
       resultText.innerText = "Draw!";
     }
-    
-    resultWinner.classList.toggle("hidden");
-    resultsDiv.classList.toggle("show-winner");
+
+    resultWinner.classList.toggle("hidden", false);
+    resultsDiv.classList.toggle("show-winner", true);
   }, 1000);
 }
+
 
 function isWinner(results) {
   return results[0].beats.includes(results[1].name);
@@ -112,8 +114,8 @@ function isWinner(results) {
 
 // Play Again
 playAgainBtn.addEventListener('click', () => {
-  gameDiv.classList.toggle("hidden");
-  resultsDiv.classList.toggle("hidden");
+  gameDiv.classList.toggle("hidden", false);
+  resultsDiv.classList.toggle("hidden", true);
 
   resultDivs.forEach((resultDiv) => {
     resultDiv.innerHTML = "";
@@ -121,8 +123,8 @@ playAgainBtn.addEventListener('click', () => {
   });
 
   resultText.innerText = "";
-  resultWinner.classList.add('hidden');
-  resultsDiv.classList.remove("show-winner"); 
+  resultWinner.classList.toggle('hidden', true);
+  resultsDiv.classList.toggle("show-winner", false);
 });
 
 // Show/Hide Rules

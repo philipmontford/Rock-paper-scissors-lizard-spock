@@ -439,3 +439,158 @@ text-align: center;
 .hidden {
   display: none;
 }
+
+
+
+/* Media Query for Tablet */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%;
+  }
+  
+  .header {
+    width: 90%;
+    margin-left: 5%;
+  }
+  
+  .game {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+      "rock rock"
+      "scissors paper"
+      "lizard spock";
+    padding-top: 3rem;
+  }
+  
+  .results_heading {
+    padding: 2rem 0 4rem;
+  }
+  
+  .results {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas: 
+      "you-title"
+      "you-picked"
+      "ai-title"
+      "ai-picked";
+  }
+  
+  .results_result {
+    transform: scale(1.2);
+  }
+  
+  .results.show-winner {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      "you-title"
+      "you-picked"
+      "result-winner"
+      "ai-title"
+      "ai-picked";
+  }
+  
+  .play-again {
+    padding: 0.4rem 2.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .rules-btn {
+    padding: 0.4rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .modal-holder {
+    width: 90%;
+  }
+  
+  .modal-header {
+    padding: 1.5rem 1.5rem 0.5rem;
+  }
+  
+  .modal-heading {
+    font-size: 1.3rem;
+  }
+  
+  .rules-img {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* Media Query for Phone */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-left: 0;
+    padding: 2rem 0;
+    border: none;
+    border-radius: 0;
+  }
+  
+  .score {
+    width: 100%;
+    padding: 1rem 0;
+    order: -1;
+  }
+  
+  .game {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+      "rock scissors"
+      "paper lizard"
+      "spock .";
+    padding-top: 2rem;
+  }
+  
+  .results_heading {
+    font-size: 1.2rem;
+    padding: 1.5rem 0;
+  }
+  
+  .results_result {
+    min-width: 8rem;
+    min-height: 8rem;
+    transform: scale(1);
+  }
+  
+  .results.show-winner {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "you-picked result-winner"
+      "ai-picked .";
+  }
+  
+  .play-again {
+    padding: 0.3rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .rules-btn {
+    padding: 0.3rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .modal-holder {
+    width: 100%;
+    border-radius: 0;
+  }
+  
+  .modal-header {
+    padding: 1rem 1rem 0.5rem;
+  }
+  
+  .modal-heading {
+    font-size: 1.2rem;
+  }
+  
+  .rules-img {
+    padding: 1rem 2rem;
+  }
+}
