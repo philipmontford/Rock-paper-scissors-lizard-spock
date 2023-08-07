@@ -94,15 +94,18 @@ function displayWinner(results) {
     const aiWins = isWinner(results.reverse());
 
     if (userWins) {
-      resultText.innerText = 'You Win!';
+      resultText.innerText = 'You Win';
+      resultText.style.left = '41%'
       resultDivs[0].classList.toggle('winner');
       keepScore(1);
     } else if (aiWins) {
-      resultText.innerText = 'You Lose!';
+      resultText.innerText = 'You Lose';
+      resultText.style.left = '39%'
       resultDivs[1].classList.toggle('winner');
       keepScore(-1);
     } else {
-      resultText.innerText = "It's a Draw!";
+      resultText.innerText = "Draw";
+      resultText.style.left = '44%'
     }
 
     resultWinner.classList.toggle('hidden');
