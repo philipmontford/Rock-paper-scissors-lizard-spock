@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Toggle rules modal
   function toggleRulesModal() {
     modalRules.classList.toggle("show-modal");
+    
   }
 
   // Helper function to update result text and position

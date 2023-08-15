@@ -117,11 +117,12 @@ content: '';
 position: absolute;
 width: 100%;
 height: 100%;
-left:30%;
-top: 33%;
-background: url('./images/bg-pentagon.svg') no-repeat;
+background-image: url('./images/bg-pentagon.svg');
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 z-index: -1;
-transform: scale(1.2);
+transform: scale(0.6);
 }
 
 .option_btn{
@@ -200,16 +201,16 @@ transform: scale(1.2);
 .option_btn[data-option="scissors"] {
   grid-area: scissors;
   position: absolute;
-  top: -2%;
-  right:-90%;
+  top: -8%;
+  right:-100%;
   
 }
 
 .option_btn[data-option="paper"] {
   grid-area: paper;
   position: absolute;
-  top: 53%;
-  right: -45%;
+  top: 43%;
+  right: -65%;
  
 }
 
@@ -217,15 +218,15 @@ transform: scale(1.2);
 .option_btn[data-option="rock"] {
   grid-area: rock;
   position: absolute;
-  top: 145%;
-  right: -165%;
+  top: 135%;
+  right: -175%;
   
 }
 
 .option_btn[data-option="lizard"] {
   grid-area: lizard;
   position: absolute;
-  top: 40%;
+  top: 25%;
   right: 15%;
   
 }
@@ -233,7 +234,7 @@ transform: scale(1.2);
 .option_btn[data-option="spock"] {
   grid-area: spock;
   position: absolute;
-  top: -45%;
+  top: -60%;
   left: -145%;
   
 }
@@ -594,14 +595,43 @@ text-align: center;
   }
 
   .rules {
-    position: relative;
-    width: 55%;
+    position: absolute;
+    width: 79%;
     margin: 0 auto;
   }
 
   .rules-btn {
     padding: 1rem 3rem;
-    bottom: 7rem;
+  }
+
+  .modal-holder {
+    height: 100vh;
+    width: 100%;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .modal-header{
+   
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-heading{
+    position: absolute;
+    top: 10%;
+    font-size: 2rem;
+  }
+
+  .close-btn{
+    position:absolute;
+    bottom: 2.5rem;
+  }
+  .close-btn img{
+    transform: scale(1.2);
   }
 
   .footer {
