@@ -115,12 +115,13 @@ color: var(--score-text);
 .game::before {
 content: '';
 position: absolute;
+top: 0;
 width: 100%;
 height: 100%;
 background-image: url('./images/bg-pentagon.svg');
 background-position: center;
-background-repeat: no-repeat;
 background-size: cover;
+background-repeat: no-repeat;
 z-index: -1;
 transform: scale(0.6);
 }
@@ -536,33 +537,40 @@ text-align: center;
 
   .header {
     width: 100%;
+    height: 110px;
     margin-left: 0;
-    padding-right: .8rem;
+    padding: 0rem .8rem;
   }
 
   .logo {
-    width: 80px;
+    width: 70px;
   }
 
   .score {
-    width: 100px;
-    height: auto;
+    width: 80px;
+    height: 80px;
     padding: 1rem 0;
+    border-radius: .4rem;
   }
 
   .score-title {
     font-size: 1rem;
   }
 
+  .score-number {
+    font-size: 2.5rem;
+  }
+
   .game {
     width: 100%;
+    height: 32rem;
   }
 
   .game::before {
-    top: 10%;
-    left: 0%;
-    width: 100%;
-    transform: scale(0.8);
+    background-size: contain;
+    transform: scale(0.65);
+    top: -10%;
+    
   }
 
   .option_btn {
@@ -571,12 +579,12 @@ text-align: center;
   }
 
   .option_btn[data-option="scissors"] {
-    top: -100%;
+    top: -120%;
   }
 
   .option_btn[data-option="paper"] {
-    top: -55%;
-    left: 95%;
+    top: -60%;
+    left: 100%;
   }
 
   .option_btn[data-option="rock"] {
@@ -585,19 +593,21 @@ text-align: center;
   }
 
   .option_btn[data-option="lizard"] {
-    top: -80%;
-    left: 17%;
+    top: -85%;
+    left: 30%;
   }
 
   .option_btn[data-option="spock"]  {
-    top: -155%;
-    left: -130%;
+    top: -170%;
+    left: -125%;
   }
 
   .rules {
     position: absolute;
     width: 79%;
     margin: 0 auto;
+    bottom: 0rem;
+    margin-bottom: 0;
   }
 
   .rules-btn {
