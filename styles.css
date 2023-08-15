@@ -456,76 +456,78 @@ text-align: center;
 
 
 /* Media Query for Tablet */
-@media (max-width: 768px) {
-  .container {
-    max-width: 90%;
-  }
-  
-  .header {
-    width: 90%;
-    margin-left: 5%;
-  }
-  
-  .game {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 
-      "rock rock"
-      "scissors paper"
-      "lizard spock";
-    padding-top: 3rem;
-  }
-  
-  .results_heading {
-    padding: 2rem 0 4rem;
-  }
-  
-  .results {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-areas: 
-      "you-title"
-      "you-picked"
-      "ai-title"
-      "ai-picked";
-  }
-  
-  .results_result {
-    transform: scale(1.2);
-  }
-  
-  .results.show-winner {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-areas:
-      "you-title"
-      "you-picked"
-      "result-winner"
-      "ai-title"
-      "ai-picked";
-  }
-  
-  .play-again {
-    padding: 0.4rem 2.5rem;
-    font-size: 1.1rem;
-  }
-  
-  .rules-btn {
-    padding: 0.4rem 1.5rem;
-    font-size: 1.1rem;
-  }
-  
-  .modal-holder {
-    width: 90%;
-  }
-  
-  .modal-header {
-    padding: 1.5rem 1.5rem 0.5rem;
-  }
-  
-  .modal-heading {
-    font-size: 1.3rem;
-  }
-  
-  .rules-img {
-    padding: 1.5rem 3rem;
+@media (min-width: 720px) and (max-width: 1200px) {
+  @media (max-width: 768px) {
+    .container {
+      max-width: 90%;
+    }
+    
+    .header {
+      width: 90%;
+      margin-left: 5%;
+    }
+    
+    .game {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: 
+        "rock rock"
+        "scissors paper"
+        "lizard spock";
+      padding-top: 3rem;
+    }
+    
+    .results_heading {
+      padding: 2rem 0 4rem;
+    }
+    
+    .results {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-areas: 
+        "you-title"
+        "you-picked"
+        "ai-title"
+        "ai-picked";
+    }
+    
+    .results_result {
+      transform: scale(1.2);
+    }
+    
+    .results.show-winner {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-areas:
+        "you-title"
+        "you-picked"
+        "result-winner"
+        "ai-title"
+        "ai-picked";
+    }
+    
+    .play-again {
+      padding: 0.4rem 2.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .rules-btn {
+      padding: 0.4rem 1.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .modal-holder {
+      width: 90%;
+    }
+    
+    .modal-header {
+      padding: 1.5rem 1.5rem 0.5rem;
+    }
+    
+    .modal-heading {
+      font-size: 1.3rem;
+    }
+    
+    .rules-img {
+      padding: 1.5rem 3rem;
+    }
   }
 }
 
